@@ -1,6 +1,6 @@
 <?php
 
-namespace Omnipay\CSOB;
+namespace Omnipay\Csob;
 
 use Omnipay\Common\AbstractGateway;
 
