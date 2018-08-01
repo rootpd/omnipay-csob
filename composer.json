@@ -25,12 +25,9 @@
     }
   },
   "require": {
-    "ondrakoupil/csob-eapi-paygate": "^1.7",
-    "ext-openssl": "*",
-    "ext-hash": "*",
-    "ext-soap": "*",
-    "ext-SimpleXML": "*",
-    "omnipay/common": "~2.0"
+    "php": "^7.1",
+    "omnipay/common": "~2.0",
+    "ondrakoupil/csob-eapi-paygate": "^1.7"
   },
   "require-dev": {
     "omnipay/tests": "~2.0"
