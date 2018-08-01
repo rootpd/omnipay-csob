@@ -1,0 +1,41 @@
+{
+  "name": "rootpd/omnipay-csob",
+  "type": "library",
+  "description": "CSOB driver for the Omnipay payment processing library",
+  "keywords": [
+    "csob",
+    "oneclick",
+    "gateway",
+    "merchant",
+    "omnipay",
+    "pay",
+    "payment"
+  ],
+  "homepage": "https://github.com/rootpd/omnipay-csob",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Peter Dulacka",
+      "email": "dulacka@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Omnipay\\": "src/"
+    }
+  },
+  "require": {
+    "ondrakoupil/csob-eapi-paygate": "^1.7",
+    "ext-openssl": "*",
+    "ext-hash": "*",
+    "ext-soap": "*",
+    "ext-SimpleXML": "*",
+    "omnipay/common": "~2.0"
+  },
+  "require-dev": {
+    "omnipay/tests": "~2.0"
+  },
+  "scripts": {
+    "test": "phpunit"
+  }
+}
