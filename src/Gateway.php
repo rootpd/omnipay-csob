@@ -50,9 +50,9 @@ class Gateway extends AbstractGateway
         return $this->setParameter('merchantId', $value);
     }
 
-    public function setMerchantName($value)
+    public function setShopName($value)
     {
-        return $this->setParameter('merchantName', $value);
+        return $this->setParameter('shopName', $value);
     }
 
     public function setBankPublicKeyFilePath($value)

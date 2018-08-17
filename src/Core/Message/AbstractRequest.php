@@ -23,9 +23,9 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         return $this->setParameter('merchantId', $value);
     }
 
-    public function setMerchantName($value)
+    public function setShopName($value)
     {
-        return $this->setParameter('merchantName', $value);
+        return $this->setParameter('shopName', $value);
     }
 
     public function setClosePayment($value)
@@ -45,7 +45,7 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
             $this->getParameter('merchantId'),
             $this->getParameter('privateKeyFilePath'),
             $this->getParameter('bankPublicKeyFilePath'),
-            $this->getParameter('merchantName'),
+            $this->getParameter('shopName'),
             $this->getReturnUrl(),
             $this->getTestMode() ? GatewayUrl::TEST_LATEST : GatewayUrl::PRODUCTION_LATEST
         );
