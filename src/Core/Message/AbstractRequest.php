@@ -33,6 +33,12 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         return $this->setParameter('closePayment', $value);
     }
 
+    public function getData()
+    {
+        $this->validate('merchantId', 'privateKeyFilePath', 'bankPublicKeyFilePath');
+        return [];
+    }
+
     public function getClient(): Client
     {
         $config = new Config(

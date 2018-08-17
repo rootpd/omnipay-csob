@@ -16,7 +16,7 @@ class Gateway extends AbstractGateway
     const STATUS_SETTLED = 8;
     const STATUS_REFUND_PROCESSING = 9;
     const STATUS_RETURNED = 10;
-    
+
     public function getName()
     {
         return 'CSOB CZ';
@@ -25,54 +25,9 @@ class Gateway extends AbstractGateway
     public function getDefaultParameters()
     {
         return [
-            'merchantId' => '',
-            'merchantName' => '',
-            'bankPublicKeyFilePath' => '',
-            'privateKeyFilePath' => '',
-
             'closePayment' => false,
             'oneClickPayment' => false,
         ];
-    }
-
-    public function getMerchantId()
-    {
-        return $this->getParameter('merchantId');
-    }
-
-    public function setMerchantId($value)
-    {
-        return $this->setParameter('merchantId', $value);
-    }
-
-    public function getMerchantName()
-    {
-        return $this->getParameter('merchantName');
-    }
-
-    public function setMerchantName($value)
-    {
-        return $this->setParameter('merchantName', $value);
-    }
-
-    public function getBankPublicKeyFilePath()
-    {
-        return $this->getParameter('bankPublicKeyFilePath');
-    }
-
-    public function setBankPublicKeyFilePath($value)
-    {
-        return $this->setParameter('bankPublicKeyFilePath', $value);
-    }
-
-    public function getPrivateKeyFilePath()
-    {
-        return $this->getParameter('privateKeyFilePath');
-    }
-
-    public function setPrivateKeyFilePath($value)
-    {
-        return $this->setParameter('privateKeyFilePath', $value);
     }
 
     public function purchase(array $parameters = array())
@@ -90,9 +45,24 @@ class Gateway extends AbstractGateway
         return $this->createRequest(\Omnipay\Csob\Message\OneClickPaymentRequest::class, $parameters);
     }
 
-    public function getClosePayment()
+    public function setMerchantId($value)
     {
-        return $this->getParameter('closePayment');
+        return $this->setParameter('merchantId', $value);
+    }
+
+    public function setMerchantName($value)
+    {
+        return $this->setParameter('merchantName', $value);
+    }
+
+    public function setBankPublicKeyFilePath($value)
+    {
+        return $this->setParameter('bankPublicKeyFilePath', $value);
+    }
+
+    public function setPrivateKeyFilePath($value)
+    {
+        return $this->setParameter('privateKeyFilePath', $value);
     }
 
     public function setClosePayment($value)
@@ -100,13 +70,18 @@ class Gateway extends AbstractGateway
         return $this->setParameter('closePayment', $value);
     }
 
-    public function getOneClickPayment()
-    {
-        return $this->getParameter('oneClickPayment');
-    }
-
     public function setOneClickPayment($value)
     {
         return $this->setParameter('oneClickPayment', $value);
+    }
+
+    public function setCurrency($value)
+    {
+        return $this->setParameter('currency', $value);
+    }
+
+    public function setLanguage($value)
+    {
+        return $this->setParameter('language', $value);
     }
 }

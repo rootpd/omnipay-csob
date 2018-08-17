@@ -47,10 +47,20 @@ class PurchaseRequest extends AbstractRequest
         return $this->setParameter('oneClickPayment', $value);
     }
 
+    public function setCurrency($value)
+    {
+        return $this->setParameter('currency', $value);
+    }
+
+    public function setLanguage($value)
+    {
+        return $this->setParameter('language', $value);
+    }
+
     public function getData()
     {
         $this->validate('returnUrl', 'transactionId', 'cart');
-        return [];
+        return parent::getData();
     }
 
     public function sendData($data)
@@ -60,6 +70,8 @@ class PurchaseRequest extends AbstractRequest
             $payment->addCartItem($item['name'], $item['quantity'], $item['price'] * 100);
         }
         $payment->setOneClickPayment($this->getOneClickPayment());
+        $payment->currency = $this->getParameter('currency');
+        $payment->language = $this->getParameter('language');
 
         $client = $this->getClient();
         $client->paymentInit($payment);
