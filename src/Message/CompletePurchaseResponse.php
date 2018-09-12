@@ -14,6 +14,11 @@ class CompletePurchaseResponse extends AbstractResponse
         ;
     }
 
+    public function isCancelled()
+    {
+        return $this->getStatus() == Gateway::STATUS_CANCELLED;
+    }
+
     public function getStatus()
     {
         if (isset($this->data['status'])) {
