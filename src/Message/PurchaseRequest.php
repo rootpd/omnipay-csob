@@ -74,7 +74,7 @@ class PurchaseRequest extends AbstractRequest
         $payment->language = $this->getParameter('language');
 
         $client = $this->getClient();
-        $client->paymentInit($payment);
+        $data = $client->paymentInit($payment);
         $this->setRedirectUrl($client->getPaymentProcessUrl($payment));
 
         return $this->response = new PurchaseResponse($this, $data);
