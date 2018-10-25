@@ -18,7 +18,7 @@ class CompletePurchaseRequest extends AbstractRequest
         // offline confirmation
         if (!$response && $this->getParameter('payId')) {
             $payment = new Payment();
-            $payment->setPayId($this->getParameter('payId') . 'xxx');
+            $payment->setPayId($this->getParameter('payId'));
             $response = $client->paymentStatus($payment, false);
         }
 
