@@ -17,6 +17,11 @@ class Gateway extends AbstractGateway
     const STATUS_REFUND_PROCESSING = 9;
     const STATUS_RETURNED = 10;
 
+    const ONECLICK_PAYMENT_CHECKBOX_HIDDEN_UNCHECKED = 0;
+    const ONECLICK_PAYMENT_CHECKBOX_DISPLAYED_UNCHECKED = 1;
+    const ONECLICK_PAYMENT_CHECKBOX_DISPLAYED_CHECKED = 2;
+    const ONECLICK_PAYMENT_CHECKBOX_HIDDEN_CHECKED = 3;
+
     public function getName()
     {
         return 'CSOB CZ';
@@ -33,6 +38,11 @@ class Gateway extends AbstractGateway
     public function purchase(array $parameters = array())
     {
         return $this->createRequest(\Omnipay\Csob\Message\PurchaseRequest::class, $parameters);
+    }
+
+    public function checkout(array $parameters = array())
+    {
+        return $this->createRequest(\Omnipay\Csob\Message\CheckoutRequest::class, $parameters);
     }
 
     public function completePurchase(array $parameters = array())
@@ -73,6 +83,16 @@ class Gateway extends AbstractGateway
     public function setOneClickPayment($value)
     {
         return $this->setParameter('oneClickPayment', $value);
+    }
+
+    public function setOneClickPaymentCheckbox($value)
+    {
+        return $this->setParameter('oneClickPaymentCheckbox', $value);
+    }
+
+    public function setDisplayOmnibox($value)
+    {
+        return $this->setParameter('displayOmnibox', $value);
     }
 
     public function setCurrency($value)
