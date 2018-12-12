@@ -95,6 +95,11 @@ class Gateway extends AbstractGateway
         return $this->setParameter('displayOmnibox', $value);
     }
 
+    public function setReturnCheckoutUrl($value)
+    {
+        return $this->setParameter('returnCheckoutUrl', $value);
+    }
+
     public function setCurrency($value)
     {
         return $this->setParameter('currency', $value);

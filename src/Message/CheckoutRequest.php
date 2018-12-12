@@ -67,6 +67,11 @@ class CheckoutRequest extends AbstractRequest
         return $this->setParameter('displayOmnibox', $value);
     }
 
+    public function setReturnCheckoutUrl($value)
+    {
+        return $this->setParameter('returnCheckoutUrl', $value);
+    }
+
     public function getData()
     {
         $this->validate('returnUrl', 'transactionId', 'cart');
@@ -89,7 +94,8 @@ class CheckoutRequest extends AbstractRequest
         $this->setRedirectUrl($client->getPaymentCheckoutUrl(
             $payment,
             $this->getParameter('oneClickPaymentCheckbox'),
-            $this->getParameter('displayOmnibox')
+            $this->getParameter('displayOmnibox'),
+            $this->getParameter('returnCheckoutUrl')
         ));
 
         return $this->response = new CheckoutResponse($this, $data);
