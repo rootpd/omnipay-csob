@@ -37,14 +37,14 @@ class OneClickPaymentRequest extends AbstractRequest
         return $this->setParameter('payId', $value);
     }
 
-    public function getTotalAmount()
+    public function getCart()
     {
-        return $this->getParameter('totalAmount');
+        return $this->getParameter('cart');
     }
 
-    public function setTotalAmount($value)
+    public function setCart($value)
     {
-        return $this->setParameter('totalAmount', $value);
+        return $this->setParameter('cart', $value);
     }
 
     public function getData()
@@ -56,6 +56,9 @@ class OneClickPaymentRequest extends AbstractRequest
     public function sendData($data)
     {
         $payment = new Payment($this->getParameter("transactionId"));
+        foreach ($this->getCart() as $item) {
+            $payment->addCartItem($item['name'], $item['quantity'], $item['price'] * 100);
+        }
 
         $client = $this->getClient();
         $client->paymentOneClickInit($this->getPayId(), $payment);
