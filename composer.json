@@ -27,7 +27,7 @@
   "require": {
     "php": "^7.1",
     "omnipay/common": "~2.0",
-    "ondrakoupil/csob-eapi-paygate": "^1.7"
+    "ondrakoupil/csob-eapi-paygate": "^1.7.7"
   },
   "require-dev": {
     "omnipay/tests": "~2.0"

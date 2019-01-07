@@ -2,7 +2,7 @@
 
 namespace Omnipay\Csob\Core\Message;
 
-use Omnipay\Csob\Client;
+use OndraKoupil\Csob\Client;
 use OndraKoupil\Csob\Config;
 use OndraKoupil\Csob\GatewayUrl;
 
