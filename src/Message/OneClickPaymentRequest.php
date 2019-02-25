@@ -57,7 +57,7 @@ class OneClickPaymentRequest extends AbstractRequest
     {
         $payment = new Payment($this->getParameter("transactionId"));
         foreach ($this->getCart() as $item) {
-            $payment->addCartItem($item['name'], $item['quantity'], $item['price'] * 100);
+            $payment->addCartItem($item['name'], $item['quantity'], intval(round($item['price'] * 100)));
         }
 
         $client = $this->getClient();
