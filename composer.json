@@ -27,7 +27,7 @@
   "require": {
     "php": "^7.1",
     "league/omnipay": "~3.0",
-    "ondrakoupil/csob-eapi-paygate": "~1.7.7"
+    "ondrakoupil/csob-eapi-paygate": "~1.8.1"
   },
   "scripts": {
     "test": "phpunit"

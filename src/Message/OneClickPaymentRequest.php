@@ -61,7 +61,7 @@ class OneClickPaymentRequest extends AbstractRequest
         }
 
         $client = $this->getClient();
-        $client->paymentOneClickInit($this->getPayId(), $payment);
+        $client->paymentOneClickInit($this->getPayId(), $payment, [], $this->getClientIp());
         $client->paymentOneClickStart($payment);
 
         $repeatedRun = false;
