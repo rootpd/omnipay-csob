@@ -55,6 +55,11 @@ class Gateway extends AbstractGateway
         return $this->createRequest(\Omnipay\Csob\Message\OneClickPaymentRequest::class, $parameters);
     }
 
+    public function paymentStatus(array $parameters = array())
+    {
+        return $this->createRequest(\Omnipay\Csob\Message\PaymentStatusRequest::class, $parameters);
+    }
+
     public function setMerchantId($value)
     {
         return $this->setParameter('merchantId', $value);
