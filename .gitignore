@@ -2,3 +2,4 @@ vendor
 build
 .idea
 .history
+composer.lock

@@ -3,7 +3,7 @@
 namespace Omnipay\Csob\Message;
 
 use Omnipay\Csob\Core\Message\AbstractRequest;
-use OndraKoupil\Csob\Exception;
+use OndraKoupil\Csob\Extensions\CardNumberExtension;
 use OndraKoupil\Csob\Payment;
 
 class CompletePurchaseRequest extends AbstractRequest
@@ -19,12 +19,14 @@ class CompletePurchaseRequest extends AbstractRequest
         if (!$response && $this->getParameter('payId')) {
             $payment = new Payment();
             $payment->setPayId($this->getParameter('payId'));
-            $response = $client->paymentStatus($payment, false);
+            $cardNumberExtension = new CardNumberExtension();
+            $response = $client->paymentStatus($payment, false, [$cardNumberExtension]);
         }
 
         return [
             'payId' => $response['payId'],
             'status' => $response["paymentStatus"],
+            'expiration' => isset($cardNumberExtension) ? $cardNumberExtension->getExpiration() : null,
         ];
     }
 
