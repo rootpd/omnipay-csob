@@ -3,6 +3,8 @@
 namespace Omnipay\Csob\Message;
 
 use Omnipay\Csob\Core\Message\AbstractRequest;
+use OndraKoupil\Csob\Metadata\Account;
+use OndraKoupil\Csob\Metadata\Customer;
 use OndraKoupil\Csob\Payment;
 
 class CheckoutRequest extends AbstractRequest
@@ -72,6 +74,46 @@ class CheckoutRequest extends AbstractRequest
         return $this->setParameter('returnCheckoutUrl', $value);
     }
 
+    public function getName()
+    {
+        return $this->getParameter('name');
+    }
+
+    public function setName($value)
+    {
+        return $this->setParameter('name', $value);
+    }
+
+    public function getEmail()
+    {
+        return $this->getParameter('email');
+    }
+
+    public function setEmail($value)
+    {
+        return $this->setParameter('email', $value);
+    }
+
+    public function getCreatedAt()
+    {
+        return $this->getParameter('createdAt');
+    }
+
+    public function setCreatedAt($value)
+    {
+        return $this->setParameter('createdAt', $value);
+    }
+
+    public function getChangedAt()
+    {
+        return $this->getParameter('changedAt');
+    }
+
+    public function setChangedAt($value)
+    {
+        return $this->setParameter('changedAt', $value);
+    }
+
     public function getData()
     {
         $this->validate('returnUrl', 'transactionId', 'cart');
@@ -87,6 +129,25 @@ class CheckoutRequest extends AbstractRequest
         $payment->setOneClickPayment($this->getOneClickPayment());
         $payment->currency = $this->getParameter('currency');
         $payment->language = $this->getParameter('language');
+
+        $customer = new Customer();
+        $account = new Account();
+
+        if ($name = $this->getName()) {
+            $customer->name = $name;
+        }
+        if ($email = $this->getEmail()) {
+            $customer->email = $email;
+        }
+        if ($createdAt = $this->getCreatedAt()) {
+            $account->setCreatedAt($createdAt);
+        }
+        if ($changedAt = $this->getChangedAt()) {
+            $account->setChangedAt($changedAt);
+        }
+
+        $customer->setAccount($account);
+        $payment->setCustomer($customer);
 
         $client = $this->getClient();
         $data = $client->paymentInit($payment);
