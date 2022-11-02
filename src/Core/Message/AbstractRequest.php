@@ -33,6 +33,11 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         return $this->setParameter('closePayment', $value);
     }
 
+    public function setTraceLog($value)
+    {
+        return $this->setParameter('traceLog', $value);
+    }
+
     public function getData()
     {
         $this->validate('merchantId', 'privateKeyFilePath', 'bankPublicKeyFilePath');
@@ -52,6 +57,12 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 
         $config->closePayment = $this->getParameter('closePayment');
 
-        return new Client($config);
+        $client = new Client($config);
+
+        if ($traceLog = $this->getParameter('traceLog')) {
+            $client->setTraceLog($traceLog);
+        }
+
+        return $client;
     }
 }

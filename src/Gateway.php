@@ -114,4 +114,9 @@ class Gateway extends AbstractGateway
     {
         return $this->setParameter('language', $value);
     }
+
+    public function setTraceLog($value)
+    {
+        return $this->setParameter('traceLog', $value);
+    }
 }
