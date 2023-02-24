@@ -21,4 +21,9 @@ class OneClickPaymentResponse extends AbstractResponse
         }
         return null;
     }
+
+    public function getTransactionReference()
+    {
+        return $this->data['payId'] ?? null;
+    }
 }
