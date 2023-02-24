@@ -134,6 +134,10 @@ class OneClickPaymentRequest extends AbstractRequest
             $repeatedRun = true;
         } while ($data['paymentStatus'] == 2);
 
+        if ($data['paymentStatus'] === 4 && $client->getConfig()->closePayment) {
+            $client->paymentClose($payment);
+        }
+
         return $this->response = new OneClickPaymentResponse($this, $data);
     }
 }
