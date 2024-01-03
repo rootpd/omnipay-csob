@@ -11,6 +11,7 @@ class CompletePurchaseResponse extends AbstractResponse
     {
         return $this->getStatus() == Gateway::STATUS_CONFIRMED // if closePayment was false
             || $this->getStatus() == Gateway::STATUS_WAITING_FOR_SETTLEMENT // if closePayment was true
+            || $this->getStatus() == Gateway::STATUS_SETTLED // if payment was already settled (late confirmation)
             ;
     }
 
