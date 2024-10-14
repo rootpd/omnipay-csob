@@ -134,6 +134,7 @@ class CheckoutRequest extends AbstractRequest
         $payment->setOneClickPayment($this->getOneClickPayment());
         $payment->currency = $this->getParameter('currency');
         $payment->language = $this->getParameter('language');
+        $payment->returnMethod =  $this->getParameter('returnMethod');
         $payment->customerId = $this->getParameter('customerId');
 
         $customer = new Customer();

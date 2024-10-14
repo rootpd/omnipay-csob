@@ -72,6 +72,7 @@ class PurchaseRequest extends AbstractRequest
         $payment->setOneClickPayment($this->getOneClickPayment());
         $payment->currency = $this->getParameter('currency');
         $payment->language = $this->getParameter('language');
+        $payment->returnMethod =  $this->getParameter('returnMethod');
 
         $client = $this->getClient();
         $data = $client->paymentInit($payment);
