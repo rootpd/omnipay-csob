@@ -57,6 +57,11 @@ class PurchaseRequest extends AbstractRequest
         return $this->setParameter('language', $value);
     }
 
+    public function setReturnMethod($value)
+    {
+        return $this->setParameter('returnMethod', $value);
+    }
+
     public function getData()
     {
         $this->validate('returnUrl', 'transactionId', 'cart');
@@ -72,6 +77,7 @@ class PurchaseRequest extends AbstractRequest
         $payment->setOneClickPayment($this->getOneClickPayment());
         $payment->currency = $this->getParameter('currency');
         $payment->language = $this->getParameter('language');
+        $payment->returnMethod = $this->getParameter('returnMethod');
 
         $client = $this->getClient();
         $data = $client->paymentInit($payment);

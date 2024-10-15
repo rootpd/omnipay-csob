@@ -119,6 +119,11 @@ class CheckoutRequest extends AbstractRequest
         return $this->setParameter('customerId', $value);
     }
 
+    public function setReturnMethod($value)
+    {
+        return $this->setParameter('returnMethod', $value);
+    }
+
     public function getData()
     {
         $this->validate('returnUrl', 'transactionId', 'cart');
@@ -135,6 +140,7 @@ class CheckoutRequest extends AbstractRequest
         $payment->currency = $this->getParameter('currency');
         $payment->language = $this->getParameter('language');
         $payment->customerId = $this->getParameter('customerId');
+        $payment->returnMethod = $this->getParameter('returnMethod');
 
         $customer = new Customer();
         $account = new Account();
